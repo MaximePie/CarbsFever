@@ -39,7 +39,7 @@ class CarbsLineController extends BaseController
 
 
         /** @var Ticket $ticket */
-        $ticket = Ticket::find($ticketId)->first();
+        $ticket = Ticket::find($ticketId);
         $carbsLine = CarbsLine::create([
             'ticket_id' => $ticketId,
             'portions' => $request->get('portion'),
