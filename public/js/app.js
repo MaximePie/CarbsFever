@@ -87618,13 +87618,36 @@ function Ticket() {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(undefined),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       ticket = _React$useState2[0],
-      setTicket = _React$useState2[1]; // const [productName, setProductName] = React.useState('');
+      setTicket = _React$useState2[1];
 
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(''),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      productName = _React$useState4[0],
+      setProductName = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(1),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      portion = _React$useState6[0],
+      setPortion = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(undefined),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      carbsPerHundred = _React$useState8[0],
+      setCarbsPerHundred = _React$useState8[1];
+
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(undefined),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      gramsPerPortion = _React$useState10[0],
+      setGramsPerPortion = _React$useState10[1];
+
+  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
+      _React$useState12 = _slicedToArray(_React$useState11, 2),
+      isExpanded = _React$useState12[0],
+      setExpansion = _React$useState12[1];
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
       id = _useParams.id;
 
-  console.log(id);
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     axios.get('/api/tickets/' + id).then(function (response) {
       setTicket(response.data);
@@ -87644,7 +87667,58 @@ function Ticket() {
     }, line.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "Ticket__line-detail"
     }, line.product.name));
-  })));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    value: productName,
+    type: "text",
+    onChange: function onChange(event) {
+      return setProductName(event.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    value: portion,
+    type: "text",
+    onChange: function onChange(event) {
+      return setPortion(event.target.value);
+    }
+  }), isExpanded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Calories pour 100g",
+    value: carbsPerHundred,
+    type: "text",
+    onChange: function onChange(event) {
+      return setCarbsPerHundred(event.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Grammes par portion",
+    value: gramsPerPortion,
+    type: "text",
+    onChange: function onChange(event) {
+      return setGramsPerPortion(event.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    onClick: submitProduct
+  }, "Enregistrer")));
+
+  function submitProduct() {
+    axios.post('/api/carbsLine/' + ticket.id, {
+      product: productName,
+      portion: portion,
+      carbsPerHundred: carbsPerHundred || undefined,
+      gramsPerPortion: gramsPerPortion || undefined
+    }).then(function (response) {
+      if (response.data[0] !== 500) {
+        setTicket(response.data);
+        setProductName('');
+        setExpansion(false);
+        setCarbsPerHundred(0);
+        setGramsPerPortion(0);
+        setPortion(0);
+      }
+
+      setExpansion(true);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
 }
 
 /***/ }),

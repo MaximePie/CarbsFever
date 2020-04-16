@@ -21,6 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('tickets', 'TicketController@index');
 
 Route::get('tickets/{id}', 'TicketController@show');
-Route::post('carbsLine', 'CarbsLineController@create');
+Route::post('carbsLine/{ticketId}', 'CarbsLineController@create');
 
 Route::delete('carbsLine/{id}', 'CarbsLineController@delete');

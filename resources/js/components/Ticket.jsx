@@ -3,11 +3,13 @@ import {useParams} from "react-router-dom";
 
 export default function Ticket() {
     const [ticket, setTicket] = React.useState(undefined);
-    // const [productName, setProductName] = React.useState('');
-    let { id } = useParams();
+    const [productName, setProductName] = React.useState('');
+    const [portion, setPortion] = React.useState(1);
+    const [carbsPerHundred, setCarbsPerHundred] = React.useState(undefined);
+    const [gramsPerPortion, setGramsPerPortion] = React.useState(undefined);
 
-    console.log(id)
-
+    const [isExpanded, setExpansion] = React.useState(false);
+    let {id} = useParams();
 
     React.useEffect(() => {
         axios.get('/api/tickets/' + id)
@@ -36,9 +38,52 @@ export default function Ticket() {
                         )
                     })}
 
-
+                    <input value={productName} type="text" onChange={(event) => setProductName(event.target.value)}/>
+                    <input value={portion} type="text" onChange={(event) => setPortion(event.target.value)}/>
+                    {isExpanded && (
+                        <>
+                            <input
+                                placeholder="Calories pour 100g"
+                                value={carbsPerHundred}
+                                type="text"
+                                onChange={
+                                    (event) => setCarbsPerHundred(event.target.value)
+                                }
+                            />
+                            <input
+                                placeholder="Grammes par portion"
+                                value={gramsPerPortion}
+                                type="text"
+                                onChange={
+                                    (event) => setGramsPerPortion(event.target.value)
+                                }
+                            />
+                        </>
+                    )}
+                    <button type="submit" onClick={submitProduct}>Enregistrer</button>
                 </div>
             )}
         </div>
     );
+
+    function submitProduct() {
+        axios.post('/api/carbsLine/' + ticket.id, {
+            product: productName,
+            portion,
+            carbsPerHundred: carbsPerHundred || undefined,
+            gramsPerPortion: gramsPerPortion || undefined,
+        }).then(response => {
+            if (response.data[0] !== 500) {
+                setTicket(response.data);
+                setProductName('');
+                setExpansion(false);
+                setCarbsPerHundred(0);
+                setGramsPerPortion(0);
+                setPortion(0);
+            }
+            setExpansion(true);
+        }).catch(err => {
+            console.log(err)
+        })
+    }
 }
