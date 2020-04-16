@@ -1,24 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createBrowserHistory} from "history";
+import TicketsPage from "./TicketsPage";
+import Ticket from "./Ticket";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 function Example() {
+    const browserHistory = createBrowserHistory()
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
-
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
+        <BrowserRouter history={browserHistory}>
+            <div className="mainContainer">
+                <Switch>
+                    <Route exact path="/" key="ticketsPage">
+                        <TicketsPage/>
+                    </Route>
+                    <Route path="/tickets/:id" key="ticket">
+                        <Ticket/>
+                    </Route>
+                </Switch>
             </div>
-        </div>
+        </BrowserRouter>
     );
 }
 
 export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+if (document.getElementById('root')) {
+    ReactDOM.render(<Example />, document.getElementById('root'));
 }

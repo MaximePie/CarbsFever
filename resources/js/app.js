@@ -13,3 +13,5 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+import moment from 'moment';
+moment.locale('fr');
