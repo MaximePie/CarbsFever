@@ -37,7 +37,7 @@ class TicketController extends BaseController
     public function show($id)
     {
         /** @var Ticket $ticket */
-        $ticket = Ticket::find($id)->first();
+        $ticket = Ticket::find($id);
         $ticket['user'] = $ticket->user()->first();
         $ticket['lines'] = $ticket->carbsLines()->get();
         $ticket['lines']->each(function(CarbsLine $line) {
