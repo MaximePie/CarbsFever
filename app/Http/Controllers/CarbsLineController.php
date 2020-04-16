@@ -28,21 +28,26 @@ class CarbsLineController extends BaseController
             return JsonResponse::create([500, $carbsPerHundred, $gramsPerPortion]);
         }
 
-        $product = Product::create([
-            'name' => $productName,
-            'carbsPerHundred' => $carbsPerHundred,
-            'gramsPerPortion' => $gramsPerPortion,
-            'carbsPerPortion' => $carbsPerHundred * $gramsPerPortion / 100,
-        ]);
+        if (!$product) {
+            $product = Product::create([
+                'name' => $productName,
+                'carbsPerHundred' => $carbsPerHundred,
+                'gramsPerPortion' => $gramsPerPortion,
+                'carbsPerPortion' => $carbsPerHundred * $gramsPerPortion / 100,
+            ]);
+        }
 
 
         /** @var Ticket $ticket */
         $ticket = Ticket::find($ticketId)->first();
-        CarbsLine::create([
+        $carbsLine = CarbsLine::create([
             'ticket_id' => $ticketId,
             'portions' => $request->get('portion'),
             'product_id' => $product->id,
         ]);
+
+        $ticket->current += $carbsLine->portions * $product->carbsPerHundred;
+
         $ticket['user'] = $ticket->user()->first();
         $ticket['lines'] = $ticket->carbsLines()->get();
         $ticket['lines']->each(function(CarbsLine $line) {

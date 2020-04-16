@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 export default function Ticket() {
     const [ticket, setTicket] = React.useState(undefined);
     const [productName, setProductName] = React.useState('');
-    const [portion, setPortion] = React.useState(1);
+    const [portion, setPortion] = React.useState(undefined);
     const [carbsPerHundred, setCarbsPerHundred] = React.useState(undefined);
     const [gramsPerPortion, setGramsPerPortion] = React.useState(undefined);
 
@@ -20,47 +20,85 @@ export default function Ticket() {
         })
     }, []);
 
-
     return (
         <div className="Ticket">
-            C'est le component
             {ticket && (
                 <div className="Ticket__content">
-                    <h3>{ticket.user.name}</h3>
-                    <p>{ticket.target}</p>
-                    <p>{ticket.current}</p>
+                    <div className="Ticket__header">
+                        <h3 className="Ticket__title">{ticket.user.name}</h3>
+                        <div className="Ticket__details">
+                            <p className="Ticket__detail">
+                                <span className="Ticket__subdetail">
+                                    Maximum: {ticket.target}
+                                </span>
+                                <span className="Ticket__subdetail">
+                                    Actuel: {ticket.current}
+                                </span>
+                            </p>
+                            <p className="Ticket__detail Ticket__detail--big">
+                                Restant: {ticket.target - ticket.current}
+                            </p>
+                        </div>
+                    </div>
                     {ticket.lines.map(line => {
+                        const lineCarbs = line.product.carbsPerPortion * line.portions;
                         return (
                             <div className="Ticket__line">
-                                <span className="Ticket__line-detail">{line.id}</span>
                                 <span className="Ticket__line-detail">{line.product.name}</span>
+                                <span className="Ticket__line-detail">{line.portions}</span>
+                                <span className="Ticket__line-detail">{lineCarbs}</span>
                             </div>
                         )
                     })}
 
-                    <input value={productName} type="text" onChange={(event) => setProductName(event.target.value)}/>
-                    <input value={portion} type="text" onChange={(event) => setPortion(event.target.value)}/>
-                    {isExpanded && (
-                        <>
-                            <input
-                                placeholder="Calories pour 100g"
-                                value={carbsPerHundred}
-                                type="text"
-                                onChange={
-                                    (event) => setCarbsPerHundred(event.target.value)
-                                }
-                            />
-                            <input
-                                placeholder="Grammes par portion"
-                                value={gramsPerPortion}
-                                type="text"
-                                onChange={
-                                    (event) => setGramsPerPortion(event.target.value)
-                                }
-                            />
-                        </>
-                    )}
-                    <button type="submit" onClick={submitProduct}>Enregistrer</button>
+                    <div className="Ticket__fields">
+                        <input
+                            className="Ticket__fields-input"
+                            value={productName}
+                            placeholder="Aliment"
+                            type="text"
+                            onChange={(event) => setProductName(event.target.value)}
+                        />
+                        <input
+                            className="Ticket__fields-input"
+                            placeholder="Portion"
+                            value={portion}
+                            type="text"
+                            onChange={(event) => setPortion(event.target.value)}
+                        />
+                        {isExpanded && (
+                            <>
+                                <input
+                                    className="Ticket__fields-input"
+                                    placeholder="Calories pour 100g"
+                                    value={carbsPerHundred}
+                                    type="text"
+                                    onChange={
+                                        (event) => setCarbsPerHundred(event.target.value)
+                                    }
+                                />
+                                <input
+                                    className="Ticket__fields-input"
+                                    placeholder="Grammes par portion"
+                                    value={gramsPerPortion}
+                                    type="text"
+                                    onChange={
+                                        (event) => setGramsPerPortion(event.target.value)
+                                    }
+                                />
+                            </>
+                        )}
+                    </div>
+                    <div className="Ticket__actions">
+                        <button
+                            disabled={!productName || !portion}
+                            type="submit"
+                            onClick={submitProduct}
+                            className="Ticket__submit"
+                        >
+                            Enregistrer
+                        </button>
+                    </div>
                 </div>
             )}
         </div>
@@ -81,7 +119,9 @@ export default function Ticket() {
                 setGramsPerPortion(0);
                 setPortion(0);
             }
-            setExpansion(true);
+            else {
+                setExpansion(true);
+            }
         }).catch(err => {
             console.log(err)
         })

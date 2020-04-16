@@ -87625,7 +87625,7 @@ function Ticket() {
       productName = _React$useState4[0],
       setProductName = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(1),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(undefined),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       portion = _React$useState6[0],
       setPortion = _React$useState6[1];
@@ -87657,29 +87657,53 @@ function Ticket() {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Ticket"
-  }, "C'est le component", ticket && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, ticket && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Ticket__content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, ticket.user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, ticket.target), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, ticket.current), ticket.lines.map(function (line) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Ticket__header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "Ticket__title"
+  }, ticket.user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Ticket__details"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "Ticket__detail"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "Ticket__subdetail"
+  }, "Maximum: ", ticket.target), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "Ticket__subdetail"
+  }, "Actuel: ", ticket.current)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "Ticket__detail Ticket__detail--big"
+  }, "Restant: ", ticket.target - ticket.current))), ticket.lines.map(function (line) {
+    var lineCarbs = line.product.carbsPerPortion * line.portions;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "Ticket__line"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "Ticket__line-detail"
-    }, line.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, line.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "Ticket__line-detail"
-    }, line.product.name));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    }, line.portions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "Ticket__line-detail"
+    }, lineCarbs));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Ticket__fields"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Ticket__fields-input",
     value: productName,
+    placeholder: "Aliment",
     type: "text",
     onChange: function onChange(event) {
       return setProductName(event.target.value);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Ticket__fields-input",
+    placeholder: "Portion",
     value: portion,
     type: "text",
     onChange: function onChange(event) {
       return setPortion(event.target.value);
     }
   }), isExpanded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Ticket__fields-input",
     placeholder: "Calories pour 100g",
     value: carbsPerHundred,
     type: "text",
@@ -87687,16 +87711,21 @@ function Ticket() {
       return setCarbsPerHundred(event.target.value);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Ticket__fields-input",
     placeholder: "Grammes par portion",
     value: gramsPerPortion,
     type: "text",
     onChange: function onChange(event) {
       return setGramsPerPortion(event.target.value);
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Ticket__actions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    disabled: !productName || !portion,
     type: "submit",
-    onClick: submitProduct
-  }, "Enregistrer")));
+    onClick: submitProduct,
+    className: "Ticket__submit"
+  }, "Enregistrer"))));
 
   function submitProduct() {
     axios.post('/api/carbsLine/' + ticket.id, {
@@ -87712,9 +87741,9 @@ function Ticket() {
         setCarbsPerHundred(0);
         setGramsPerPortion(0);
         setPortion(0);
+      } else {
+        setExpansion(true);
       }
-
-      setExpansion(true);
     })["catch"](function (err) {
       console.log(err);
     });

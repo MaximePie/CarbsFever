@@ -10899,16 +10899,70 @@ a.text-dark:focus {
   font-style: italic;
 }
 
+.Ticket {
+  padding: 1em;
+}
+
+.Ticket__header {
+  margin: 8px 0;
+  border-bottom: 1px solid grey;
+}
+
+.Ticket__title {
+  text-align: center;
+}
+
+.Ticket__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Ticket__detail--big {
+  font-size: 1.5em;
+}
+
+.Ticket__subdetail {
+  display: block;
+}
+
 .Ticket__line {
   margin: 8px 0;
-  border: solid 1px;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 3fr 1fr 2fr 2fr;
+  border-bottom: 1px solid grey;
 }
 
 .Ticket__line-detail {
   font-size: 1.5em;
-  border: solid;
   padding: 8px;
+}
+
+.Ticket__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 8px;
+  grid-column-gap: 8px;
+  margin: 8px 0;
+}
+
+.Ticket__fields-input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.Ticket__actions {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.Ticket__submit {
+  border-radius: 100px;
+  outline: none;
+  border: none;
+  padding: 4px 8px;
+  font-size: 1.5em;
+  color: white;
+  background-color: dodgerblue;
 }
 
