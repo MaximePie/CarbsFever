@@ -87574,7 +87574,7 @@ function Example() {
     path: "/",
     key: "ticketsPage"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TicketsPage__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
-    path: "/tickets/:id",
+    path: "/ticket/:id",
     key: "ticket"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Ticket__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
 }

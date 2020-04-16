@@ -14,7 +14,7 @@ function Example() {
                     <Route exact path="/" key="ticketsPage">
                         <TicketsPage/>
                     </Route>
-                    <Route path="/tickets/:id" key="ticket">
+                    <Route path="/ticket/:id" key="ticket">
                         <Ticket/>
                     </Route>
                 </Switch>
