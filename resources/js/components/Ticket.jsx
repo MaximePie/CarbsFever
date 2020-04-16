@@ -45,8 +45,8 @@ export default function Ticket() {
                         return (
                             <div className="Ticket__line">
                                 <span className="Ticket__line-detail">{line.product.name}</span>
-                                <span className="Ticket__line-detail">{line.portions}</span>
-                                <span className="Ticket__line-detail">{lineCarbs}</span>
+                                <span className="Ticket__line-detail">x{line.portions}</span>
+                                <span className="Ticket__line-detail">{lineCarbs}Kcal</span>
                             </div>
                         )
                     })}

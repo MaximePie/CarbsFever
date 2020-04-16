@@ -27,21 +27,21 @@ class DatabaseSeeder extends Seeder
 
         $ticket1 = Ticket::create([
             'target' => $user1->target,
-            'current' => 300,
+            'current' => 0,
             'user_id' => $user1->id,
         ]);
 
         $ticket2 = Ticket::create([
             'target' => $user2->target,
-            'current' => 500,
+            'current' => 0,
             'user_id' => $user2->id,
         ]);
 
         $product1 = Product::create([
             'name' => 'lait',
-            'carbsPerHundred' => 117,
+            'carbsPerHundred' => 100,
             'gramsPerPortion' => 250,
-            'carbsPerPortion' => 297,
+            'carbsPerPortion' => 250,
         ]);
 
         $product2 = Product::create([

@@ -46,7 +46,8 @@ class CarbsLineController extends BaseController
             'product_id' => $product->id,
         ]);
 
-        $ticket->current += $carbsLine->portions * $product->carbsPerHundred;
+        $ticket->current += $carbsLine->portions * $product->carbsPerPortion;
+        $ticket->save();
 
         $ticket['user'] = $ticket->user()->first();
         $ticket['lines'] = $ticket->carbsLines()->get();

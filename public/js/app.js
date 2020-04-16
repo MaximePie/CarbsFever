@@ -87681,9 +87681,9 @@ function Ticket() {
       className: "Ticket__line-detail"
     }, line.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "Ticket__line-detail"
-    }, line.portions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    }, "x", line.portions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "Ticket__line-detail"
-    }, lineCarbs));
+    }, lineCarbs, "Kcal"));
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Ticket__fields"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
