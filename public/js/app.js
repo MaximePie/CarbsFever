@@ -87719,7 +87719,7 @@ function Ticket() {
       return setGramsPerPortion(event.target.value);
     }
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Ticket__actions"
+    className: "Ticket__actions PrimaryButton"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     disabled: !productName || !portion,
     type: "submit",
@@ -87807,10 +87807,10 @@ function TicketsPage() {
     className: "TicketsPage"
   }, ticketsList.map(function (ticket) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "TicketPage__ticket"
+      className: "TicketsPage__ticket"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, ticket.user.name, " - ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "TicketPage__ticket-date"
-    }, moment__WEBPACK_IMPORTED_MODULE_1___default()(ticket.created_at).format('Do/MM'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, ticket.target), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, ticket.current), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      className: "TicketsPage__ticket-date"
+    }, moment__WEBPACK_IMPORTED_MODULE_1___default()(ticket.created_at).format('Do/MM'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Objectif : ", ticket.target), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total : ", ticket.current), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       to: '/ticket/' + ticket.user.name,
       className: "TicketsPage__link"
     }, "Afficher"));

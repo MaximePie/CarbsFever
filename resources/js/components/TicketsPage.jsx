@@ -20,13 +20,13 @@ export default function TicketsPage() {
         <div className="TicketsPage">
             {ticketsList.map((ticket) => {
                 return (
-                    <div className="TicketPage__ticket">
-                        <h3>{ticket.user.name} - <span className="TicketPage__ticket-date">{moment(ticket.created_at).format('Do/MM')}</span></h3>
+                    <div className="TicketsPage__ticket">
+                        <h3>{ticket.user.name} - <span className="TicketsPage__ticket-date">{moment(ticket.created_at).format('Do/MM')}</span></h3>
                         <p>
-                            {ticket.target}
+                            Objectif : {ticket.target}
                         </p>
                         <p>
-                            {ticket.current}
+                            Total : {ticket.current}
                         </p>
                         <Link to={'/ticket/' + ticket.user.name} className="TicketsPage__link">Afficher</Link>
                     </div>

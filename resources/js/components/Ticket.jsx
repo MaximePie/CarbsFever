@@ -89,7 +89,7 @@ export default function Ticket() {
                             </>
                         )}
                     </div>
-                    <div className="Ticket__actions">
+                    <div className="Ticket__actions PrimaryButton">
                         <button
                             disabled={!productName || !portion}
                             type="submit"
