@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 export default function Ticket() {
     const [ticket, setTicket] = React.useState(undefined);
     const [productName, setProductName] = React.useState('');
-    const [portion, setPortion] = React.useState(undefined);
+    const [portion, setPortion] = React.useState(1);
     const [carbsPerHundred, setCarbsPerHundred] = React.useState(undefined);
     const [gramsPerPortion, setGramsPerPortion] = React.useState(undefined);
 

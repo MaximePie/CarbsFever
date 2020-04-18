@@ -16,6 +16,7 @@ class CarbsLineController extends BaseController
      *
      * @param $ticketId
      * @param Request $request
+     * @return Ticket|JsonResponse
      */
     public function create($ticketId, Request $request)
     {

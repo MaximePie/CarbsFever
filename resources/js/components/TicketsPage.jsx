@@ -28,7 +28,7 @@ export default function TicketsPage() {
                         <p>
                             {ticket.current}
                         </p>
-                        <Link to={'/ticket/' + ticket.id} className="TicketsPage__link">Afficher</Link>
+                        <Link to={'/ticket/' + ticket.user.name} className="TicketsPage__link">Afficher</Link>
                     </div>
                 )
             })}

@@ -87625,7 +87625,7 @@ function Ticket() {
       productName = _React$useState4[0],
       setProductName = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(undefined),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(1),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       portion = _React$useState6[0],
       setPortion = _React$useState6[1];
@@ -87811,7 +87811,7 @@ function TicketsPage() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, ticket.user.name, " - ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "TicketPage__ticket-date"
     }, moment__WEBPACK_IMPORTED_MODULE_1___default()(ticket.created_at).format('Do/MM'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, ticket.target), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, ticket.current), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      to: '/ticket/' + ticket.id,
+      to: '/ticket/' + ticket.user.name,
       className: "TicketsPage__link"
     }, "Afficher"));
   }));
