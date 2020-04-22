@@ -117,7 +117,7 @@ export default function Ticket() {
                 setExpansion(false);
                 setCarbsPerHundred(0);
                 setGramsPerPortion(0);
-                setPortion(0);
+                setPortion(1);
             }
             else {
                 setExpansion(true);
