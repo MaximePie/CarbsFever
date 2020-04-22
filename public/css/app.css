@@ -10924,18 +10924,6 @@ a.text-dark:focus {
   display: block;
 }
 
-.Ticket__line {
-  margin: 8px 0;
-  display: grid;
-  grid-template-columns: 3fr 1fr 2fr 2fr;
-  border-bottom: 1px solid grey;
-}
-
-.Ticket__line-detail {
-  font-size: 1.5em;
-  padding: 8px;
-}
-
 .Ticket__fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10963,5 +10951,17 @@ a.text-dark:focus {
   font-size: 1.5em;
   color: white;
   background-color: dodgerblue;
+}
+
+.CarbsLine {
+  margin: 8px 0;
+  display: grid;
+  grid-template-columns: 3fr 1fr 2fr 2fr;
+  border-bottom: 1px solid grey;
+}
+
+.CarbsLine__detail {
+  font-size: 1.5em;
+  padding: 8px;
 }
 

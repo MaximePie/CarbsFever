@@ -29,18 +29,6 @@
         display: block;
     }
 
-    &__line {
-        margin: 8px 0;
-        display: grid;
-        grid-template-columns: 3fr 1fr 2fr 2fr;
-        border-bottom: 1px solid grey;
-
-        &-detail {
-            font-size: 1.5em;
-            padding: 8px;
-        }
-    }
-
     &__fields {
         display: grid;
         grid-template-columns: 1fr 1fr;

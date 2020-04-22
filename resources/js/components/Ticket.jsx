@@ -1,5 +1,6 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
+import CarbsLine from "./CarbsLine";
 
 export default function Ticket() {
     const [ticket, setTicket] = React.useState(undefined);
@@ -41,13 +42,8 @@ export default function Ticket() {
                         </div>
                     </div>
                     {ticket.lines.map(line => {
-                        const lineCarbs = line.product.carbsPerPortion * line.portions;
                         return (
-                            <div className="Ticket__line">
-                                <span className="Ticket__line-detail">{line.product.name}</span>
-                                <span className="Ticket__line-detail">x{line.portions}</span>
-                                <span className="Ticket__line-detail">{lineCarbs}Kcal</span>
-                            </div>
+                            <CarbsLine line={line}/>
                         )
                     })}
 
