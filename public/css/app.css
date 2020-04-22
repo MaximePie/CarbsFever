@@ -10965,3 +10965,15 @@ a.text-dark:focus {
   padding: 8px;
 }
 
+.Navbar {
+  padding: 8px;
+  margin: 16px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Navbar__link {
+  font-size: 1.5em;
+  text-transform: capitalize;
+}
+

@@ -41,12 +41,7 @@ export default function Ticket() {
                             </p>
                         </div>
                     </div>
-                    {ticket.lines.map(line => {
-                        return (
-                            <CarbsLine line={line}/>
-                        )
-                    })}
-
+                    {ticket.lines.map(line => <CarbsLine line={line}/>)}
                     <div className="Ticket__fields">
                         <input
                             className="Ticket__fields-input"

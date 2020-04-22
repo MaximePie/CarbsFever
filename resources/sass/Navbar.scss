@@ -1,0 +1,12 @@
+.Navbar {
+    padding: 8px;
+    margin: 16px 0;
+
+    display: flex;
+    justify-content: space-around;
+
+    &__link {
+        font-size: 1.5em;
+        text-transform: capitalize;
+    }
+}
