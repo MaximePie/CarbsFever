@@ -20,7 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('tickets', 'TicketController@index');
 
-Route::get('tickets/{userName}', 'TicketController@show');
+Route::get('tickets/{ticketId}', 'TicketController@show')
+    ->where('ticketId', '[0-9]+');
+Route::get('tickets/{userName}', 'TicketController@current');
+
 Route::post('carbsLine/{ticketId}', 'CarbsLineController@create');
 
 Route::delete('carbsLine/{id}', 'CarbsLineController@delete');
