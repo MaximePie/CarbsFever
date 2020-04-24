@@ -87563,7 +87563,14 @@ function Component(props) {
     className: "CarbsLine__detail"
   }, "x", line.portions), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "CarbsLine__detail"
-  }, lineCarbs, "Kcal"));
+  }, lineCarbs, "Kcal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "CarbsLine__actions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-trash",
+    onClick: function onClick() {
+      return props.onDeleteLine(line.id);
+    }
+  })));
 }
 
 /***/ }),
@@ -87708,11 +87715,7 @@ function Ticket() {
       id = _useParams.id;
 
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
-    axios.get('/api/tickets/' + id).then(function (response) {
-      setTicket(response.data);
-    })["catch"](function (err) {
-      console.log(err);
-    });
+    fetchData();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Ticket"
@@ -87734,7 +87737,8 @@ function Ticket() {
     className: "Ticket__detail Ticket__detail--big"
   }, "Restant: ", ticket.target - ticket.current))), ticket.lines.map(function (line) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CarbsLine__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      line: line
+      line: line,
+      onDeleteLine: deleteLine
     });
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Ticket__fields"
@@ -87778,6 +87782,17 @@ function Ticket() {
     onClick: submitProduct,
     className: "Ticket__submit"
   }, "Enregistrer"))));
+  /**
+   * Fetch the data of the ticket
+   */
+
+  function fetchData() {
+    axios.get('/api/tickets/' + id).then(function (response) {
+      setTicket(response.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
 
   function submitProduct() {
     axios.post('/api/carbsLine/' + ticket.id, {
@@ -87796,6 +87811,14 @@ function Ticket() {
       } else {
         setExpansion(true);
       }
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
+
+  function deleteLine(lineId) {
+    axios.get('/api/carbsLine/delete/' + lineId).then(function (response) {
+      fetchData();
     })["catch"](function (err) {
       console.log(err);
     });

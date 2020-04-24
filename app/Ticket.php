@@ -33,4 +33,21 @@ class Ticket extends Model
     {
         return $this->hasMany(CarbsLine::class);
     }
+
+    /**
+     * Update the current Ticket based on the current carbslines
+     * @return $this
+     */
+    public function updateFromCarbsLine(): self
+    {
+        $current = 0;
+
+        $this->carbsLines()->each(function(CarbsLine $line) use (&$current){
+           $current += $line->carbs();
+        });
+
+        $this->current = $current;
+        $this->save();
+        return $this;
+    }
 }

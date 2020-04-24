@@ -9,6 +9,9 @@ export default function Component(props) {
             <span className="CarbsLine__detail">{line.product.name}</span>
             <span className="CarbsLine__detail">x{line.portions}</span>
             <span className="CarbsLine__detail">{lineCarbs}Kcal</span>
+            <span className="CarbsLine__actions">
+                <i className="fas fa-trash" onClick={() => props.onDeleteLine(line.id)}/>
+            </span>
         </div>
     );
 }

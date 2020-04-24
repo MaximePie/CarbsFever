@@ -13,12 +13,7 @@ export default function Ticket() {
     let {id} = useParams();
 
     React.useEffect(() => {
-        axios.get('/api/tickets/' + id)
-            .then(response => {
-                setTicket(response.data)
-            }).catch(err => {
-            console.log(err)
-        })
+        fetchData();
     }, []);
 
     return (
@@ -41,7 +36,7 @@ export default function Ticket() {
                             </p>
                         </div>
                     </div>
-                    {ticket.lines.map(line => <CarbsLine line={line}/>)}
+                    {ticket.lines.map(line => <CarbsLine line={line} onDeleteLine={deleteLine}/>)}
                     <div className="Ticket__fields">
                         <input
                             className="Ticket__fields-input"
@@ -95,6 +90,18 @@ export default function Ticket() {
         </div>
     );
 
+    /**
+     * Fetch the data of the ticket
+     */
+    function fetchData() {
+        axios.get('/api/tickets/' + id)
+            .then(response => {
+                setTicket(response.data)
+            }).catch(err => {
+            console.log(err)
+        })
+    }
+
     function submitProduct() {
         axios.post('/api/carbsLine/' + ticket.id, {
             product: productName,
@@ -116,5 +123,14 @@ export default function Ticket() {
         }).catch(err => {
             console.log(err)
         })
+    }
+
+    function deleteLine(lineId) {
+        axios.get('/api/carbsLine/delete/' + lineId)
+            .then((response) => {
+                fetchData();
+            }).catch(err => {
+            console.log(err)
+        });
     }
 }

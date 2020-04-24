@@ -26,4 +26,4 @@ Route::get('tickets/{userName}', 'TicketController@current');
 
 Route::post('carbsLine/{ticketId}', 'CarbsLineController@create');
 
-Route::delete('carbsLine/{id}', 'CarbsLineController@delete');
+Route::get('carbsLine/delete/{id}', 'CarbsLineController@delete');

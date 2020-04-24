@@ -32,4 +32,12 @@ class CarbsLine extends Model
     {
         return $this->belongsTo(Ticket::class);
     }
+
+    /**
+     * Returns the calculated carbs
+     */
+    public function carbs(): int
+    {
+        return $this->portions * $this->product()->first()->carbsPerPortion;
+    }
 }

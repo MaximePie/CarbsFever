@@ -41,14 +41,13 @@ class CarbsLineController extends BaseController
 
         /** @var Ticket $ticket */
         $ticket = Ticket::find($ticketId);
-        $carbsLine = CarbsLine::create([
+        CarbsLine::create([
             'ticket_id' => $ticketId,
             'portions' => $request->get('portion'),
             'product_id' => $product->id,
         ]);
 
-        $ticket->current += $carbsLine->portions * $product->carbsPerPortion;
-        $ticket->save();
+        $ticket->updateFromCarbsLine();
 
         $ticket['user'] = $ticket->user()->first();
         $ticket['lines'] = $ticket->carbsLines()->get();
@@ -57,5 +56,17 @@ class CarbsLineController extends BaseController
         });
 
         return $ticket;
+    }
+
+    /** Remove a targeted ID
+     * @param $id int the ID of the row we want to remove
+     * @return
+     */
+    public function delete($id) {
+        /** @var CarbsLine $carbsLine */
+        $carbsLine = CarbsLine::findOrFail($id);
+        $carbsLine->forceDelete();
+        $carbsLine->ticket()->first()->updateFromCarbsLine();
+        return $carbsLine;
     }
 }
