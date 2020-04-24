@@ -77,11 +77,11 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param int $id
+     * @return Product
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        return Product::find($id)->forceDelete();
     }
 }

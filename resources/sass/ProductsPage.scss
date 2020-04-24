@@ -1,8 +1,8 @@
 .ProductsPage {
-    border: solid;
+    padding: $default_padding;
 
     &__product {
-        margin: $default_spacing;
+        margin: $default_vertical_margin;
         border-bottom: $separating_border;
 
         display: grid;
@@ -11,6 +11,12 @@
 
         &--header {
             border-bottom: $separating_strong_border;
+        }
+
+        &-actions {
+            margin: 8px;
+            display: flex;
+            align-items: center;
         }
     }
 }

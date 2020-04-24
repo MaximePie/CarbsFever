@@ -15549,11 +15549,11 @@ a.text-dark:focus {
 }
 
 .ProductsPage {
-  border: solid;
+  padding: 8px;
 }
 
 .ProductsPage__product {
-  margin: 8px;
+  margin: 8px 0;
   border-bottom: 1px solid grey;
   display: grid;
   grid-template-columns: 7fr 2fr 3fr;
@@ -15562,5 +15562,11 @@ a.text-dark:focus {
 
 .ProductsPage__product--header {
   border-bottom: 2px solid #282828;
+}
+
+.ProductsPage__product-actions {
+  margin: 8px;
+  display: flex;
+  align-items: center;
 }
 

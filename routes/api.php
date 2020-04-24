@@ -28,3 +28,4 @@ Route::get('tickets/{userName}', 'TicketController@current');
 Route::post('carbsLine/{ticketId}', 'CarbsLineController@create');
 
 Route::get('carbsLine/delete/{id}', 'CarbsLineController@delete');
+Route::get('products/delete/{id}', 'ProductsController@delete');
