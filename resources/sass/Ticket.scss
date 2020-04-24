@@ -3,7 +3,7 @@
 
     &__header {
         margin: 8px 0;
-        border-bottom: 1px solid grey;
+        border-bottom: $separating_border;
     }
 
     &__content {
@@ -39,7 +39,7 @@
         &-input {
             outline: none;
             border: none;
-            border-bottom: 1px solid grey;
+            border-bottom: $separating_border;
 
             &--with-sub-parts {
                 display: grid;

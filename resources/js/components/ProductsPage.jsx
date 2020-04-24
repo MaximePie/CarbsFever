@@ -11,12 +11,17 @@ export default function ProductsPage() {
     return (
         <div className="ProductsPage">
             <h1>Liste des ingrédients</h1>
+            <div className="ProductsPage__product ProductsPage__product--header">
+                <div>Nom</div>
+                <div>Cal.</div>
+                <div>Actions</div>
+            </div>
             {productsList.map((product) => {
                 return (
-                    <>
+                    <div className="ProductsPage__product">
                         <div>{product.name}</div>
                         <div>{product.carbsPerHundred}</div>
-                    </>
+                    </div>
                 )
             })}
         </div>

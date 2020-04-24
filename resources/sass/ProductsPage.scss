@@ -1,3 +1,16 @@
 .ProductsPage {
     border: solid;
+
+    &__product {
+        margin: $default_spacing;
+        border-bottom: $separating_border;
+
+        display: grid;
+        grid-template-columns: 7fr 2fr 3fr;
+        font-size: 1.5em;
+
+        &--header {
+            border-bottom: $separating_strong_border;
+        }
+    }
 }

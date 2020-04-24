@@ -4,7 +4,7 @@
     &__ticket {
         padding: 16px;
         margin: 8px 0;
-        border-bottom: darkslategrey solid 1px;
+        border-bottom: $separating_border;
 
         &-date {
             font-size: 0.65em;
