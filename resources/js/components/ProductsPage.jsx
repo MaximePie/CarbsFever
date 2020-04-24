@@ -1,7 +1,9 @@
 import React from 'react';
+import Loading from "./Loading"
 
 export default function ProductsPage() {
     const [productsList, setProductsList] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {
         fetchData();
@@ -10,6 +12,7 @@ export default function ProductsPage() {
 
     return (
         <div className="ProductsPage">
+            <Loading isHidden={!isLoading}/>
             <h1>Liste des ingrédients</h1>
             <div className="ProductsPage__product ProductsPage__product--header">
                 <div>Nom</div>
@@ -35,9 +38,11 @@ export default function ProductsPage() {
      * Fetch the data of the ticket
      */
     function fetchData() {
+        setIsLoading(true);
         axios.get('/api/products')
             .then(response => {
                 setProductsList(response.data)
+                setIsLoading(false);
             }).catch(err => {
             console.log(err)
         })
@@ -47,6 +52,7 @@ export default function ProductsPage() {
      * Delete the product
      */
     function deleteProduct(productId) {
+        setIsLoading(true);
         axios.get('/api/products/delete/' + productId)
             .then(response => {
                 fetchData();

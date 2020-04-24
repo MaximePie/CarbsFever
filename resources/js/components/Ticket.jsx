@@ -1,6 +1,7 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 import CarbsLine from "./CarbsLine";
+import Loading from "./Loading";
 
 export default function Ticket() {
     const [ticket, setTicket] = React.useState(undefined);
@@ -8,6 +9,7 @@ export default function Ticket() {
     const [portion, setPortion] = React.useState(1);
     const [carbsPerHundred, setCarbsPerHundred] = React.useState(undefined);
     const [gramsPerPortion, setGramsPerPortion] = React.useState(undefined);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     const [isExpanded, setExpansion] = React.useState(false);
     let {id} = useParams();
@@ -18,6 +20,7 @@ export default function Ticket() {
 
     return (
         <div className="Ticket">
+            <Loading isHidden={!isLoading}/>
             {ticket && (
                 <div className="Ticket__content">
                     <div className="Ticket__header">
@@ -100,15 +103,18 @@ export default function Ticket() {
      * Fetch the data of the ticket
      */
     function fetchData() {
+        setIsLoading(true);
         axios.get('/api/tickets/' + id)
             .then(response => {
-                setTicket(response.data)
+                setTicket(response.data);
+                setIsLoading(false);
             }).catch(err => {
             console.log(err)
         })
     }
 
     function submitProduct() {
+        setIsLoading(true);
         axios.post('/api/carbsLine/' + ticket.id, {
             product: productName,
             portion,
@@ -125,12 +131,14 @@ export default function Ticket() {
             } else {
                 setExpansion(true);
             }
+            setIsLoading(false);
         }).catch(err => {
             console.log(err)
         })
     }
 
     function deleteLine(lineId) {
+        setIsLoading(true);
         axios.get('/api/carbsLine/delete/' + lineId)
             .then((response) => {
                 fetchData();
