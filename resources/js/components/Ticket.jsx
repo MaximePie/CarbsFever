@@ -45,13 +45,19 @@ export default function Ticket() {
                             type="text"
                             onChange={(event) => setProductName(event.target.value)}
                         />
-                        <input
-                            className="Ticket__fields-input"
-                            placeholder="Portion"
-                            value={portion}
-                            type="text"
-                            onChange={(event) => setPortion(event.target.value)}
-                        />
+                        <div className="Ticket__fields-input Ticket__fields-input--with-sub-parts">
+                            <input
+                                className="Ticket__fields-input--number"
+                                placeholder="Portion"
+                                value={portion}
+                                type="text"
+                                onChange={(event) => setPortion(event.target.value)}
+                            />
+                            <div className="Ticket__fields-input-arrows">
+                                <i className="Ticket__fields-input-arrow fas fa-caret-up" onClick={increasePortion}/>
+                                <i className="Ticket__fields-input-arrow fas fa-caret-down" onClick={decreasePortion}/>
+                            </div>
+                        </div>
                         {isExpanded && (
                             <>
                                 <input
@@ -116,8 +122,7 @@ export default function Ticket() {
                 setCarbsPerHundred(0);
                 setGramsPerPortion(0);
                 setPortion(1);
-            }
-            else {
+            } else {
                 setExpansion(true);
             }
         }).catch(err => {
@@ -132,5 +137,24 @@ export default function Ticket() {
             }).catch(err => {
             console.log(err)
         });
+    }
+
+
+    /**
+     * Decrements portions amount
+     */
+    function decreasePortion() {
+        if (portion > 1) {
+            setPortion(portion - 1);
+        }
+    }
+
+    /**
+     * Increments portions amount
+     */
+    function increasePortion() {
+        if (portion < 10) {
+            setPortion(portion + 1);
+        }
     }
 }

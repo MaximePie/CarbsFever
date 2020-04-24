@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property int current
+ * @property int id
+ * @method static first()
+ */
 class Ticket extends Model
 {
     protected $fillable = [
@@ -49,5 +54,16 @@ class Ticket extends Model
         $this->current = $current;
         $this->save();
         return $this;
+    }
+
+    /**
+     * An alternative method to insert a CarbLine attached to a ticket
+     * @param Product $product
+     * @param int $portions
+     * @return CarbsLine
+     */
+    public function addCarbsLine(Product $product, int $portions): CarbsLine
+    {
+        return CarbsLine::create(['ticket_id' => $this->id, 'product_id' => $product->id, 'portions' => $portions]);
     }
 }

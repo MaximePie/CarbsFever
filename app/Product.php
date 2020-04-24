@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static first()
+ * @property int carbsPerPortion
+ */
 class Product extends Model
 {
     protected $fillable = [

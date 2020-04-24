@@ -31,15 +31,33 @@
 
     &__fields {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
         grid-row-gap: 8px;
         grid-column-gap: 8px;
-        margin: 8px 0;
+        margin: 40px 0 8px;
 
         &-input {
             outline: none;
             border: none;
             border-bottom: 1px solid grey;
+
+            &--with-sub-parts {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+            }
+
+            &--number {
+                width: 60px;
+                outline: none;
+                border: none;
+            }
+
+            &-arrows {
+                display: flex;
+                flex-direction: column;
+                font-size: 1.5em;
+                text-align: end;
+            }
         }
     }
 

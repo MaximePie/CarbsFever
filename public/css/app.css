@@ -15472,16 +15472,34 @@ a.text-dark:focus {
 
 .Ticket__fields {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   grid-row-gap: 8px;
   grid-column-gap: 8px;
-  margin: 8px 0;
+  margin: 40px 0 8px;
 }
 
 .Ticket__fields-input {
   outline: none;
   border: none;
   border-bottom: 1px solid grey;
+}
+
+.Ticket__fields-input--with-sub-parts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.Ticket__fields-input--number {
+  width: 60px;
+  outline: none;
+  border: none;
+}
+
+.Ticket__fields-input-arrows {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  text-align: end;
 }
 
 .Ticket__actions {
@@ -15513,6 +15531,9 @@ a.text-dark:focus {
 
 .CarbsLine__actions {
   margin: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 1.25em;
 }
 
 .Navbar {

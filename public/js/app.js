@@ -87750,15 +87750,25 @@ function Ticket() {
     onChange: function onChange(event) {
       return setProductName(event.target.value);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "Ticket__fields-input",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Ticket__fields-input Ticket__fields-input--with-sub-parts"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Ticket__fields-input--number",
     placeholder: "Portion",
     value: portion,
     type: "text",
     onChange: function onChange(event) {
       return setPortion(event.target.value);
     }
-  }), isExpanded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Ticket__fields-input-arrows"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "Ticket__fields-input-arrow fas fa-caret-up",
+    onClick: increasePortion
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "Ticket__fields-input-arrow fas fa-caret-down",
+    onClick: decreasePortion
+  }))), isExpanded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "Ticket__fields-input",
     placeholder: "Calories pour 100g",
     value: carbsPerHundred,
@@ -87822,6 +87832,26 @@ function Ticket() {
     })["catch"](function (err) {
       console.log(err);
     });
+  }
+  /**
+   * Decrements portions amount
+   */
+
+
+  function decreasePortion() {
+    if (portion > 1) {
+      setPortion(portion - 1);
+    }
+  }
+  /**
+   * Increments portions amount
+   */
+
+
+  function increasePortion() {
+    if (portion < 10) {
+      setPortion(portion + 1);
+    }
   }
 }
 
