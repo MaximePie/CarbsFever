@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {createBrowserHistory} from "history";
+import ProductsPage from "./ProductsPage";
 import TicketsPage from "./TicketsPage";
 import Ticket from "./Ticket";
 import Navbar from "./Navbar";
@@ -18,6 +19,9 @@ function Example() {
                     </Route>
                     <Route path="/ticket/:id" key="ticket">
                         <Ticket/>
+                    </Route>
+                    <Route path="/products" key="products">
+                        <ProductsPage/>
                     </Route>
                 </Switch>
             </div>

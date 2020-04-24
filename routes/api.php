@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('tickets', 'TicketController@index');
+Route::get('products', 'ProductsController@index');
 
 Route::get('tickets/{ticketId}', 'TicketController@show')
     ->where('ticketId', '[0-9]+');

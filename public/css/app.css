@@ -15548,3 +15548,7 @@ a.text-dark:focus {
   text-transform: capitalize;
 }
 
+.ProductsPage {
+  border: solid;
+}
+

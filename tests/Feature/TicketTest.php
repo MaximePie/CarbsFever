@@ -28,17 +28,6 @@ class TicketTest extends TestCase
 
         $ticket->updateFromCarbsLine();
         $this->assertEquals(0, $ticket->current);
-
-//        $line = CarbsLine::create(['ticket_id' => $ticket->id, 'product_id' => $product->id, 'portions' => 3]);
-//        $ticket->updateFromCarbsLine();
-//        $controlSum += $line->carbs();
-//        $this->assertEquals($controlSum, $ticket->current);
-//
-//        $line = CarbsLine::first();
-//        $line->forceDelete();
-//        $ticket->updateFromCarbsLine();
-//        $controlSum -= $line->carbs();
-//        $this->assertEquals($controlSum, $ticket->current);
     }
 
     /**
