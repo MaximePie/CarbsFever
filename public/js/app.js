@@ -87463,17 +87463,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./public/images/loading.gif":
-/*!***********************************!*\
-  !*** ./public/images/loading.gif ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/loading.gif?e4b6323e19e57f6761b1ce47b7d329e0";
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -87653,14 +87642,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Loading; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _public_images_loading_gif__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../public/images/loading.gif */ "./public/images/loading.gif");
-/* harmony import */ var _public_images_loading_gif__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_public_images_loading_gif__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _storage_images_loading_gif__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../storage/images/loading.gif */ "./storage/images/loading.gif");
+/* harmony import */ var _storage_images_loading_gif__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_storage_images_loading_gif__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function Loading(props) {
   return !props.isHidden && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "Loading",
-    src: _public_images_loading_gif__WEBPACK_IMPORTED_MODULE_1___default.a,
+    src: _storage_images_loading_gif__WEBPACK_IMPORTED_MODULE_1___default.a,
     alt: "Gif de chargement"
   });
 }
@@ -87862,9 +87851,7 @@ function Ticket() {
     className: "Ticket"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading__WEBPACK_IMPORTED_MODULE_3__["default"], {
     isHidden: !isLoading
-  }), ticket && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Ticket__content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), ticket && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Ticket__header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "Ticket__title"
@@ -87878,7 +87865,9 @@ function Ticket() {
     className: "Ticket__subdetail"
   }, "Actuel: ", ticket.current)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "Ticket__detail Ticket__detail--big"
-  }, "Restant: ", ticket.target - ticket.current))), ticket.lines.map(function (line) {
+  }, "Restant: ", ticket.target - ticket.current))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Ticket__body"
+  }, ticket.lines.map(function (line) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CarbsLine__WEBPACK_IMPORTED_MODULE_2__["default"], {
       line: line,
       onDeleteLine: deleteLine
@@ -87934,7 +87923,7 @@ function Ticket() {
     type: "submit",
     onClick: submitProduct,
     className: "Ticket__submit"
-  }, "Enregistrer"))));
+  }, "Enregistrer")))));
   /**
    * Fetch the data of the ticket
    */
@@ -88081,6 +88070,17 @@ function TicketsPage() {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./storage/images/loading.gif":
+/*!************************************!*\
+  !*** ./storage/images/loading.gif ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/loading.gif?e4b6323e19e57f6761b1ce47b7d329e0";
 
 /***/ }),
 

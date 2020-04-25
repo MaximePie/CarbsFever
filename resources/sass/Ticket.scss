@@ -1,17 +1,19 @@
 .Ticket {
     padding: 1em;
+    display: grid;
+    grid-template-rows: 8em 60vh;
 
     &__header {
         margin: 8px 0;
         border-bottom: $separating_border;
     }
 
-    &__content {
-
-    }
-
     &__title {
         text-align: center;
+    }
+
+    &__body {
+        overflow-y: auto;
     }
 
     &__details {

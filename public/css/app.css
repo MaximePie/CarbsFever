@@ -15446,6 +15446,8 @@ a.text-dark:focus {
 
 .Ticket {
   padding: 1em;
+  display: grid;
+  grid-template-rows: 8em 60vh;
 }
 
 .Ticket__header {
@@ -15455,6 +15457,10 @@ a.text-dark:focus {
 
 .Ticket__title {
   text-align: center;
+}
+
+.Ticket__body {
+  overflow-y: auto;
 }
 
 .Ticket__details {
@@ -15576,5 +15582,11 @@ a.text-dark:focus {
   top: 8px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#root {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 70px auto;
 }
 

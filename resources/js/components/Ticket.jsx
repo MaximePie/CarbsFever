@@ -22,7 +22,7 @@ export default function Ticket() {
         <div className="Ticket">
             <Loading isHidden={!isLoading}/>
             {ticket && (
-                <div className="Ticket__content">
+                <>
                     <div className="Ticket__header">
                         <h3 className="Ticket__title">{ticket.user.name}</h3>
                         <div className="Ticket__details">
@@ -39,62 +39,64 @@ export default function Ticket() {
                             </p>
                         </div>
                     </div>
-                    {ticket.lines.map(line => <CarbsLine line={line} onDeleteLine={deleteLine}/>)}
-                    <div className="Ticket__fields">
-                        <input
-                            className="Ticket__fields-input"
-                            value={productName}
-                            placeholder="Aliment"
-                            type="text"
-                            onChange={(event) => setProductName(event.target.value)}
-                        />
-                        <div className="Ticket__fields-input Ticket__fields-input--with-sub-parts">
+                    <div className="Ticket__body">
+                        {ticket.lines.map(line => <CarbsLine line={line} onDeleteLine={deleteLine}/>)}
+                        <div className="Ticket__fields">
                             <input
-                                className="Ticket__fields-input--number"
-                                placeholder="Portion"
-                                value={portion}
+                                className="Ticket__fields-input"
+                                value={productName}
+                                placeholder="Aliment"
                                 type="text"
-                                onChange={(event) => setPortion(event.target.value)}
+                                onChange={(event) => setProductName(event.target.value)}
                             />
-                            <div className="Ticket__fields-input-arrows">
-                                <i className="Ticket__fields-input-arrow fas fa-caret-up" onClick={increasePortion}/>
-                                <i className="Ticket__fields-input-arrow fas fa-caret-down" onClick={decreasePortion}/>
+                            <div className="Ticket__fields-input Ticket__fields-input--with-sub-parts">
+                                <input
+                                    className="Ticket__fields-input--number"
+                                    placeholder="Portion"
+                                    value={portion}
+                                    type="text"
+                                    onChange={(event) => setPortion(event.target.value)}
+                                />
+                                <div className="Ticket__fields-input-arrows">
+                                    <i className="Ticket__fields-input-arrow fas fa-caret-up" onClick={increasePortion}/>
+                                    <i className="Ticket__fields-input-arrow fas fa-caret-down" onClick={decreasePortion}/>
+                                </div>
                             </div>
+                            {isExpanded && (
+                                <>
+                                    <input
+                                        className="Ticket__fields-input"
+                                        placeholder="Calories pour 100g"
+                                        value={carbsPerHundred}
+                                        type="text"
+                                        onChange={
+                                            (event) => setCarbsPerHundred(event.target.value)
+                                        }
+                                    />
+                                    <input
+                                        className="Ticket__fields-input"
+                                        placeholder="Grammes par portion"
+                                        value={gramsPerPortion}
+                                        type="text"
+                                        onChange={
+                                            (event) => setGramsPerPortion(event.target.value)
+                                        }
+                                    />
+                                </>
+                            )}
                         </div>
-                        {isExpanded && (
-                            <>
-                                <input
-                                    className="Ticket__fields-input"
-                                    placeholder="Calories pour 100g"
-                                    value={carbsPerHundred}
-                                    type="text"
-                                    onChange={
-                                        (event) => setCarbsPerHundred(event.target.value)
-                                    }
-                                />
-                                <input
-                                    className="Ticket__fields-input"
-                                    placeholder="Grammes par portion"
-                                    value={gramsPerPortion}
-                                    type="text"
-                                    onChange={
-                                        (event) => setGramsPerPortion(event.target.value)
-                                    }
-                                />
-                            </>
-                        )}
+                        <div className="Ticket__actions PrimaryButton">
+                            <button
+                                disabled={!productName || !portion}
+                                type="submit"
+                                onClick={submitProduct}
+                                className="Ticket__submit"
+                            >
+                                Enregistrer
+                            </button>
+                        </div>
                     </div>
-                    <div className="Ticket__actions PrimaryButton">
-                        <button
-                            disabled={!productName || !portion}
-                            type="submit"
-                            onClick={submitProduct}
-                            className="Ticket__submit"
-                        >
-                            Enregistrer
-                        </button>
-                    </div>
-                </div>
+                </>
             )}
         </div>
     );

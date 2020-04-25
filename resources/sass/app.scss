@@ -14,3 +14,9 @@
 @import 'Navbar';
 @import 'ProductsPage';
 @import 'Loading';
+
+#root {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 70px auto;
+}
