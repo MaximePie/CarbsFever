@@ -87750,6 +87750,19 @@ function Product(props) {
       gramsPerPortion = _React$useState14[0],
       setGramsPerPortion = _React$useState14[1];
 
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
+    if (carbsPerHundred && gramsPerPortion) {
+      setCarbsPerPortion(carbsPerHundred / 100 * gramsPerPortion);
+    }
+  }, [carbsPerHundred, gramsPerPortion]);
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
+    if (product) {
+      setProductName(product.name);
+      setCarbsPerPortion(product.carbsPerPortion);
+      setCarbsPerHundred(product.carbsPerHundred);
+      setGramsPerPortion(product.gramsPerPortion);
+    }
+  }, [product]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Product"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Loading__WEBPACK_IMPORTED_MODULE_1__["default"], {

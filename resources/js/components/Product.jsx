@@ -13,6 +13,22 @@ export default function Product(props) {
     const [carbsPerHundred, setCarbsPerHundred] = React.useState(product.carbsPerHundred);
     const [gramsPerPortion, setGramsPerPortion] = React.useState(product.gramsPerPortion);
 
+    React.useEffect(() => {
+        if (carbsPerHundred && gramsPerPortion) {
+            setCarbsPerPortion(carbsPerHundred / 100 * gramsPerPortion)
+        }
+    }, [carbsPerHundred, gramsPerPortion]);
+
+
+    React.useEffect(() => {
+        if (product) {
+            setProductName(product.name);
+            setCarbsPerPortion(product.carbsPerPortion);
+            setCarbsPerHundred(product.carbsPerHundred);
+            setGramsPerPortion(product.gramsPerPortion);
+        }
+    }, [product]);
+
     return (
         <div className="Product">
             <Loading isHidden={!isLoading}/>

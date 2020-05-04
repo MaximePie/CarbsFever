@@ -82,6 +82,12 @@ class ProductsController extends Controller
         $product->carbsPerHundred = $carbsPerHundred;
         $product->gramsPerPortion = $gramsPerPortion;
         $product->carbsPerPortion = $carbsPerPortion;
+
+        if ($carbsPerPortion != $carbsPerHundred / 100 * $gramsPerPortion) {
+            $product->carbsPerHundred = $carbsPerPortion;
+            $product->gramsPerPortion = 100;
+        }
+
         $product->save();
 
         return $product;
