@@ -15582,6 +15582,11 @@ a.text-dark:focus {
   margin: 8px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
+}
+
+.Product__form {
+  grid-column: 12/12;
 }
 
 #root {

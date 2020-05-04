@@ -87716,12 +87716,42 @@ function Product(props) {
       isEditMode = _React$useState2[0],
       setIsEditMode = _React$useState2[1];
 
-  var product = props.product,
-      deleteProduct = props.deleteProduct;
+  var deleteProduct = props.deleteProduct;
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      isLoading = _React$useState4[0],
+      setIsLoading = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(props.product),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      product = _React$useState6[0],
+      setProduct = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(product.name),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      productName = _React$useState8[0],
+      setProductName = _React$useState8[1];
+
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(product.carbsPerPortion),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      carbsPerPortion = _React$useState10[0],
+      setCarbsPerPortion = _React$useState10[1];
+
+  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(product.carbsPerHundred),
+      _React$useState12 = _slicedToArray(_React$useState11, 2),
+      carbsPerHundred = _React$useState12[0],
+      setCarbsPerHundred = _React$useState12[1];
+
+  var _React$useState13 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(product.gramsPerPortion),
+      _React$useState14 = _slicedToArray(_React$useState13, 2),
+      gramsPerPortion = _React$useState14[0],
+      setGramsPerPortion = _React$useState14[1];
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "Product"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.carbsPerPortion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "ProductsPage__product-actions"
+  }, !isEditMode && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, product.carbsPerPortion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "Product-actions"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-trash",
     onClick: function onClick() {
@@ -87732,7 +87762,63 @@ function Product(props) {
     onClick: function onClick() {
       return setIsEditMode(true);
     }
-  })));
+  }))), isEditMode && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "Product__form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Nom"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Product__input-field",
+    value: productName,
+    placeholder: "Aliment",
+    type: "text",
+    onChange: function onChange(event) {
+      return setProductName(event.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Calories par portion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Product__input-field--number",
+    placeholder: "Calories par portion",
+    value: carbsPerPortion,
+    type: "text",
+    onChange: function onChange(event) {
+      return setCarbsPerPortion(event.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "Product__form-text"
+  }, "O\xF9"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Calories pour 100g"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Product__input-field",
+    placeholder: "Calories pour 100g",
+    value: carbsPerHundred,
+    type: "text",
+    onChange: function onChange(event) {
+      return setCarbsPerHundred(event.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Grammes par portion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "Product__input-field",
+    placeholder: "Grammes par portion",
+    value: gramsPerPortion,
+    type: "text",
+    onChange: function onChange(event) {
+      return setGramsPerPortion(event.target.value);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "Product-actions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-check",
+    onClick: saveProduct
+  }))));
+
+  function saveProduct() {
+    setIsLoading(true);
+    axios.post('/api/product/' + product.id, {
+      product: productName,
+      carbsPerPortion: carbsPerPortion || undefined,
+      carbsPerHundred: carbsPerHundred || undefined,
+      gramsPerPortion: gramsPerPortion || undefined
+    }).then(function (response) {
+      setIsEditMode(false);
+      setProduct(response.data);
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
 }
 
 /***/ }),

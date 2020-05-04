@@ -14,5 +14,10 @@
         margin: $default_padding;
         display: flex;
         align-items: center;
+        justify-content: space-around;
+    }
+
+    &__form {
+        grid-column: 12/12;
     }
 }

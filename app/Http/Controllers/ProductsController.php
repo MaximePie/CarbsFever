@@ -67,11 +67,24 @@ class ProductsController extends Controller
      *
      * @param Request $request
      * @param  int  $id
-     * @return Response
+     * @return Product
      */
     public function update(Request $request, $id)
     {
-        //
+        $productName = $request->get('product');
+        $carbsPerHundred = intval($request->get('carbsPerHundred'));
+        $gramsPerPortion = intval($request->get('gramsPerPortion'));
+        $carbsPerPortion = intval($request->get('carbsPerPortion'));
+
+        /** @var Product $product */
+        $product = Product::findOrFail($id);
+        $product->name = $productName;
+        $product->carbsPerHundred = $carbsPerHundred;
+        $product->gramsPerPortion = $gramsPerPortion;
+        $product->carbsPerPortion = $carbsPerPortion;
+        $product->save();
+
+        return $product;
     }
 
     /**
