@@ -1,22 +1,3 @@
 .ProductsPage {
     padding: $default_padding;
-
-    &__product {
-        margin: $default_vertical_margin;
-        border-bottom: $separating_border;
-
-        display: grid;
-        grid-template-columns: 7fr 2fr 3fr;
-        font-size: 1.5em;
-
-        &--header {
-            border-bottom: $separating_strong_border;
-        }
-
-        &-actions {
-            margin: $default_padding;
-            display: flex;
-            align-items: center;
-        }
-    }
 }

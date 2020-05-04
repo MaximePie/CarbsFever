@@ -15558,7 +15558,15 @@ a.text-dark:focus {
   padding: 8px;
 }
 
-.ProductsPage__product {
+.Loading {
+  position: fixed;
+  width: 30px;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Product {
   margin: 8px 0;
   border-bottom: 1px solid grey;
   display: grid;
@@ -15566,22 +15574,14 @@ a.text-dark:focus {
   font-size: 1.5em;
 }
 
-.ProductsPage__product--header {
+.Product--header {
   border-bottom: 2px solid #282828;
 }
 
-.ProductsPage__product-actions {
+.Product-actions {
   margin: 8px;
   display: flex;
   align-items: center;
-}
-
-.Loading {
-  position: fixed;
-  width: 30px;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 #root {

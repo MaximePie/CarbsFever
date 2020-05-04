@@ -1,5 +1,6 @@
 import React from 'react';
 import Loading from "./Loading"
+import Product from "./Product"
 
 export default function ProductsPage() {
     const [productsList, setProductsList] = React.useState([]);
@@ -14,22 +15,12 @@ export default function ProductsPage() {
         <div className="ProductsPage">
             <Loading isHidden={!isLoading}/>
             <h1>Liste des ingrédients</h1>
-            <div className="ProductsPage__product ProductsPage__product--header">
+            <div className="Product Product--header">
                 <div>Nom</div>
                 <div>Cal.</div>
                 <div>Actions</div>
             </div>
-            {productsList.map((product) => {
-                return (
-                    <div className="ProductsPage__product">
-                        <div>{product.name}</div>
-                        <div>{product.carbsPerHundred}</div>
-                        <span className="ProductsPage__product-actions">
-                            <i className="fas fa-trash" onClick={() => deleteProduct(product.id)}/>
-                        </span>
-                    </div>
-                )
-            })}
+            {productsList.map((product) => <Product product={product} onDelete={deleteProduct}/>)}
         </div>
     );
 
@@ -47,6 +38,7 @@ export default function ProductsPage() {
             console.log(err)
         })
     }
+
 
     /**
      * Delete the product
