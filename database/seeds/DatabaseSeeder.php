@@ -12,36 +12,83 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      *
      * @return void
+     * @throws Exception
      */
     public function run()
     {
-        $user1 = User::create([
-           'name' => 'Maxime',
+        factory(Product::class)->times(random_int(5, 75))->create();
+        $this->createTicketsForUser1();
+        $this->createTicketsForUser2();
+    }
+
+    /**
+     * Create an user, create stable datas and random datas
+     */
+    public function createTicketsForUser1()
+    {
+        /** @var User $user */
+        $user = User::create([
+            'name' => 'Maxime',
             'target' => 1700,
         ]);
 
-        $user2 = User::create([
-           'name' => 'Carole',
-           'target' => 1300,
+        $ticket = Ticket::create([
+            'target' => $user->target,
+            'current' => 0,
+            'user_id' => $user->id,
         ]);
 
-        $ticket1 = Ticket::create([
-            'target' => $user1->target,
-            'current' => 0,
-            'user_id' => $user1->id,
+        $product = Product::create([
+            'name' => 'lait',
+            'carbsPerHundred' => 100,
+            'gramsPerPortion' => 250,
+            'carbsPerPortion' => 250,
+        ]);
+
+        CarbsLine::create([
+            'portions' => 2,
+            'product_id' => $product->id,
+            'ticket_id' => $ticket->id,
+        ]);
+
+
+        try {
+            for ($ticketIndex = 0; $ticketIndex < random_int(1, 4); $ticketIndex += 1) {
+                Ticket::create([
+                    'target' => $user->target,
+                    'current' => 0,
+                    'user_id' => $user->id,
+                ]);
+            }
+
+            for ($carbLineIndex = 0; $carbLineIndex < random_int(3, 40); $carbLineIndex += 1) {
+                CarbsLine::create([
+                    'portions' => random_int(1, 10),
+                    'product_id' => Product::query()->inRandomOrder()->first()->id,
+                    'ticket_id' => $user->tickets()->inRandomOrder()->first()->id,
+                ]);
+            }
+
+            $user->tickets()->each(function(Ticket $ticket) {
+                $ticket->updateFromCarbsLine();
+            });
+
+        } catch (Exception $e) {
+        }
+    }
+
+    public function createTicketsForUser2()
+    {
+
+        $user2 = User::create([
+            'name' => 'Carole',
+            'target' => 1300,
         ]);
 
         $ticket2 = Ticket::create([
             'target' => $user2->target,
             'current' => 0,
             'user_id' => $user2->id,
-        ]);
-
-        $product1 = Product::create([
-            'name' => 'lait',
-            'carbsPerHundred' => 100,
-            'gramsPerPortion' => 250,
-            'carbsPerPortion' => 250,
         ]);
 
         $product2 = Product::create([
@@ -51,13 +98,7 @@ class DatabaseSeeder extends Seeder
             'carbsPerPortion' => 400,
         ]);
 
-        $carbsLine1 = CarbsLine::create([
-            'portions' => 2,
-            'product_id' => $product1->id,
-            'ticket_id' => $ticket1->id,
-        ]);
-
-        $carbsLine2 = CarbsLine::create([
+        CarbsLine::create([
             'portions' => 1,
             'product_id' => $product2->id,
             'ticket_id' => $ticket2->id,
