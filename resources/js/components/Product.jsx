@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from "./Loading";
 
 export default function Product(props) {
     const [isEditMode, setIsEditMode] = React.useState(false);
@@ -14,6 +15,7 @@ export default function Product(props) {
 
     return (
         <div className="Product">
+            <Loading isHidden={!isLoading}/>
             {!isEditMode && (
                 <>
                     <div>{product.name}</div>
@@ -26,43 +28,51 @@ export default function Product(props) {
             )}
             {isEditMode && (
                 <form className="Product__form">
-                    <label>Nom</label>
-                    <input
-                        className="Product__input-field"
-                        value={productName}
-                        placeholder="Aliment"
-                        type="text"
-                        onChange={(event) => setProductName(event.target.value)}
-                    />
-                    <label>Calories par portion</label>
-                    <input
-                        className="Product__input-field--number"
-                        placeholder="Calories par portion"
-                        value={carbsPerPortion}
-                        type="text"
-                        onChange={(event) => setCarbsPerPortion(event.target.value)}
-                    />
+                    <label className="Product__label">
+                        Nom
+                        <input
+                            className="Product__input-field"
+                            value={productName}
+                            placeholder="Aliment"
+                            type="text"
+                            onChange={(event) => setProductName(event.target.value)}
+                        />
+                    </label>
+                    <label className="Product__label">
+                        Calories par portion
+                        <input
+                            className="Product__input-field--number"
+                            placeholder="Calories par portion"
+                            value={carbsPerPortion}
+                            type="text"
+                            onChange={(event) => setCarbsPerPortion(event.target.value)}
+                        />
+                    </label>
                     <span className="Product__form-text">Où</span>
-                    <label>Calories pour 100g</label>
-                    <input
-                        className="Product__input-field"
-                        placeholder="Calories pour 100g"
-                        value={carbsPerHundred}
-                        type="text"
-                        onChange={
-                            (event) => setCarbsPerHundred(event.target.value)
-                        }
-                    />
-                    <label>Grammes par portion</label>
-                    <input
-                        className="Product__input-field"
-                        placeholder="Grammes par portion"
-                        value={gramsPerPortion}
-                        type="text"
-                        onChange={
-                            (event) => setGramsPerPortion(event.target.value)
-                        }
-                    />
+                    <label className="Product__label">
+                        Calories pour 100g
+                        <input
+                            className="Product__input-field"
+                            placeholder="Calories pour 100g"
+                            value={carbsPerHundred}
+                            type="text"
+                            onChange={
+                                (event) => setCarbsPerHundred(event.target.value)
+                            }
+                        />
+                    </label>
+                    <label className="Product__label">
+                        Grammes par portion
+                        <input
+                            className="Product__input-field"
+                            placeholder="Grammes par portion"
+                            value={gramsPerPortion}
+                            type="text"
+                            onChange={
+                                (event) => setGramsPerPortion(event.target.value)
+                            }
+                        />
+                    </label>
                     <span className="Product-actions">
                         <i className="fas fa-check" onClick={saveProduct}/>
                     </span>
@@ -80,6 +90,7 @@ export default function Product(props) {
             gramsPerPortion: gramsPerPortion || undefined,
         }).then(response => {
             setIsEditMode(false);
+            setIsLoading(false);
             setProduct(response.data);
         }).catch(err => {
             console.log(err)

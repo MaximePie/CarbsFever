@@ -18,6 +18,11 @@
     }
 
     &__form {
-        grid-column: 12/12;
+        grid-column: 1/4;
+    }
+
+    &__label {
+        display: flex;
+        flex-direction: column;
     }
 }

@@ -15586,7 +15586,12 @@ a.text-dark:focus {
 }
 
 .Product__form {
-  grid-column: 12/12;
+  grid-column: 1/4;
+}
+
+.Product__label {
+  display: flex;
+  flex-direction: column;
 }
 
 #root {
