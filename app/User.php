@@ -54,4 +54,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function averageCarbsPerDay()
+    {
+        $average = $this->tickets()->pluck('current')->average();
+        return $average;
+    }
 }

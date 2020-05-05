@@ -4,7 +4,9 @@ use App\CarbsLine;
 use App\Product;
 use App\Ticket;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +28,7 @@ class DatabaseSeeder extends Seeder
      */
     public function createTicketsForUser1()
     {
+        Log::info('This is some useful information.');
         /** @var User $user */
         $user = User::create([
             'name' => 'Maxime',
@@ -53,15 +56,16 @@ class DatabaseSeeder extends Seeder
 
 
         try {
-            for ($ticketIndex = 0; $ticketIndex < random_int(1, 4); $ticketIndex += 1) {
+            for ($ticketIndex = 0; $ticketIndex < random_int(3, 40); $ticketIndex += 1) {
                 Ticket::create([
                     'target' => $user->target,
                     'current' => 0,
                     'user_id' => $user->id,
+                    'created_at' => Carbon::now()->subDays($ticketIndex),
                 ]);
             }
 
-            for ($carbLineIndex = 0; $carbLineIndex < random_int(3, 40); $carbLineIndex += 1) {
+            for ($carbLineIndex = 0; $carbLineIndex < random_int(3, 15); $carbLineIndex += 1) {
                 CarbsLine::create([
                     'portions' => random_int(1, 10),
                     'product_id' => Product::query()->inRandomOrder()->first()->id,

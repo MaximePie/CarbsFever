@@ -15594,6 +15594,50 @@ a.text-dark:focus {
   flex-direction: column;
 }
 
+.ProfilePage {
+  padding: 8px;
+}
+
+.ProfilePage__composites-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.ProfilePage__composite {
+  border: solid 1px grey;
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.ProfilePage__composite-primary-value {
+  font-size: 1.15em;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.ProfilePage__composite-secondary-value {
+  color: grey;
+  font-size: 0.75em;
+  align-self: flex-end;
+}
+
+.ProfilePage__composite-secondary-value--warning {
+  color: #e45e10;
+}
+
+.ProfilePage__composite-secondary-value--safe {
+  color: forestgreen;
+}
+
+.ProfilePage__chart {
+  margin: 8px 0;
+  border: solid 1px;
+  padding: 8px;
+}
+
 #root {
   height: 100vh;
   display: grid;

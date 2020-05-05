@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {createBrowserHistory} from "history";
 import ProductsPage from "./ProductsPage";
 import TicketsPage from "./TicketsPage";
+import ProfilePage from "./ProfilePage";
 import Ticket from "./Ticket";
 import Navbar from "./Navbar";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
@@ -19,6 +20,9 @@ function Example() {
                     </Route>
                     <Route path="/ticket/:id" key="ticket">
                         <Ticket/>
+                    </Route>
+                    <Route path="/:username" key="profile">
+                        <ProfilePage history={browserHistory}/>
                     </Route>
                     <Route path="/products" key="products">
                         <ProductsPage/>

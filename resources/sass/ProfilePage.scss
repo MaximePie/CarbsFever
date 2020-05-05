@@ -1,0 +1,47 @@
+.ProfilePage {
+    padding: $default_padding;
+
+    &__composites-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__composite {
+        border: solid 1px grey;
+        padding: $default_padding;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: $card_shadow;
+
+        &-label {
+
+        }
+
+        &-primary-value {
+            font-size: 1.15em;
+            font-weight: bold;
+            align-self: flex-end;
+        }
+
+        &-secondary-value {
+            color: $color-secondary;
+            font-size: 0.75em;
+            align-self: flex-end;
+
+            &--warning {
+                color: #e45e10;
+            }
+
+            &--safe {
+                color: forestgreen;
+            }
+        }
+    }
+
+    &__chart {
+        margin: $default_vertical_margin;
+        border: solid 1px;
+        padding: $default_padding;
+    }
+}

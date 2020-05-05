@@ -17,6 +17,7 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+$color-secondary: grey;
 
 // Spacing
 $default_padding: 8px;
@@ -26,3 +27,6 @@ $default_horizontal_margin: 0 8px;
 // Borders
 $separating_border: 1px solid grey;
 $separating_strong_border: 2px solid #282828;
+
+// Shadows
+$card_shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
