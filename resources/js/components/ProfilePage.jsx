@@ -26,7 +26,7 @@ export default function ProfilePage(props) {
                                 Moyenne :
                             </span>
                             <span className="ProfilePage__composite-primary-value">
-                                {userInfo.average}
+                                {Math.round(userInfo.average)}
                             </span>
                             <span className={
                                 classnames(
@@ -36,7 +36,7 @@ export default function ProfilePage(props) {
                                 )
                             }>
                                 {userInfo.targetComparison > 0 && "+"}
-                                {userInfo.targetComparison}
+                                {Math.round(userInfo.targetComparison)}
                             </span>
                         </div>
                     </div>

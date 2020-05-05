@@ -88069,13 +88069,13 @@ function ProfilePage(props) {
     className: "ProfilePage__composite-label"
   }, "Moyenne :"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "ProfilePage__composite-primary-value"
-  }, userInfo.average), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, Math.round(userInfo.average)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()("ProfilePage__composite-secondary-value", {
       "ProfilePage__composite-secondary-value--warning": userInfo.targetComparison > 0
     }, {
       "ProfilePage__composite-secondary-value--safe": userInfo.targetComparison < 0
     })
-  }, userInfo.targetComparison > 0 && "+", userInfo.targetComparison))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, userInfo.targetComparison > 0 && "+", Math.round(userInfo.targetComparison)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ProfilePage__chart"
   }, "Informations graphiques \xE0 venir !")));
   /**
