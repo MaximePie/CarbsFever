@@ -3,18 +3,20 @@ import {useParams} from "react-router-dom";
 import classnames from 'classnames';
 
 export default function ProfilePage(props) {
-    let {username} = useParams();
+    let {username: paramsUserName} = useParams();
+    const [username, setUsername] = React.useState(paramsUserName);
     const [userInfo, setUserInfo] = React.useState({});
     const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {
         if (username === "default_profile") {
-            const username = window.prompt("Oui bonjour ? Comment vous appelez-vous ?");
-            props.history.push('/' + username);
+            const promptedUsername = window.prompt("Oui bonjour ? Comment vous appelez-vous ?");
+            setUsername(promptedUsername);
+            props.history.push('/profile/' + promptedUsername);
         } else {
             fetchData();
         }
-    }, []);
+    }, [username]);
 
     return (
         <div className="ProfilePage">

@@ -21,11 +21,11 @@ function Example() {
                     <Route path="/ticket/:id" key="ticket">
                         <Ticket/>
                     </Route>
-                    <Route path="/:username" key="profile">
-                        <ProfilePage history={browserHistory}/>
-                    </Route>
                     <Route path="/products" key="products">
                         <ProductsPage/>
+                    </Route>
+                    <Route path="/profile/:username" key="profile">
+                        <ProfilePage history={browserHistory}/>
                     </Route>
                 </Switch>
             </div>

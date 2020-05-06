@@ -87681,14 +87681,14 @@ function Example() {
     path: "/ticket/:id",
     key: "ticket"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Ticket__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
-    path: "/:username",
+    path: "/products",
+    key: "products"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProductsPage__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+    path: "/profile/:username",
     key: "profile"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProfilePage__WEBPACK_IMPORTED_MODULE_5__["default"], {
     history: browserHistory
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
-    path: "/products",
-    key: "products"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ProductsPage__WEBPACK_IMPORTED_MODULE_3__["default"], null)))));
+  })))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Example);
@@ -87750,7 +87750,7 @@ function Navbar(props) {
     to: "/products",
     className: "Navbar__link"
   }, "Ingredients"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/default_profile",
+    to: "/profile/default_profile",
     className: "Navbar__link"
   }, "Profil"));
 }
@@ -88038,27 +88038,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ProfilePage(props) {
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useParams"])(),
-      username = _useParams.username;
+      paramsUserName = _useParams.username;
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({}),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(paramsUserName),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      userInfo = _React$useState2[0],
-      setUserInfo = _React$useState2[1];
+      username = _React$useState2[0],
+      setUsername = _React$useState2[1];
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({}),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
-      isLoading = _React$useState4[0],
-      setIsLoading = _React$useState4[1];
+      userInfo = _React$useState4[0],
+      setUserInfo = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      isLoading = _React$useState6[0],
+      setIsLoading = _React$useState6[1];
 
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     if (username === "default_profile") {
-      var _username = window.prompt("Oui bonjour ? Comment vous appelez-vous ?");
-
-      props.history.push('/' + _username);
+      var promptedUsername = window.prompt("Oui bonjour ? Comment vous appelez-vous ?");
+      setUsername(promptedUsername);
+      props.history.push('/profile/' + promptedUsername);
     } else {
       fetchData();
     }
-  }, []);
+  }, [username]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ProfilePage"
   }, userInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
