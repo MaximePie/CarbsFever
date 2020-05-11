@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static create(array $array)
  * @method static first()
  * @property int id
+ * @property int portions
  */
 class CarbsLine extends Model
 {

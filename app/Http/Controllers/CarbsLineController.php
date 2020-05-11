@@ -69,4 +69,16 @@ class CarbsLineController extends BaseController
         $carbsLine->ticket()->first()->updateFromCarbsLine();
         return $carbsLine;
     }
+
+    /** Increments the portion of the given carbsline
+     * @param $id int the ID of the row we want to remove
+     * @return
+     */
+    public function increment($id) {
+        /** @var CarbsLine $carbsLine */
+        $carbsLine = CarbsLine::findOrFail($id);
+        $carbsLine->portions += 1;
+        $carbsLine->save();
+        return $carbsLine;
+    }
 }

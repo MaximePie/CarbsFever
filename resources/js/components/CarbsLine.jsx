@@ -11,6 +11,7 @@ export default function Component(props) {
             <span className="CarbsLine__detail">{lineCarbs}Kcal</span>
             <span className="CarbsLine__actions">
                 <i className="fas fa-trash" onClick={() => props.onDeleteLine(line.id)}/>
+                <i className="fas fa-plus-circle" onClick={() => props.onIncrementLine(line.id)}/>
             </span>
         </div>
     );

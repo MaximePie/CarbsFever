@@ -47,7 +47,9 @@ export default function Ticket(props) {
                         </div>
                     </div>
                     <div className="Ticket__body">
-                        {ticket.lines.map(line => <CarbsLine line={line} onDeleteLine={deleteLine}/>)}
+                        {ticket.lines.map(line =>
+                            <CarbsLine line={line} onDeleteLine={deleteLine} onIncrementLine={incrementLine}/>
+                            )}
                         <div className="Ticket__fields">
                             <input
                                 className="Ticket__fields-input"
@@ -153,6 +155,21 @@ export default function Ticket(props) {
     function deleteLine(lineId) {
         setIsLoading(true);
         axios.get('/api/carbsLine/delete/' + lineId)
+            .then((response) => {
+                fetchData();
+            }).catch(err => {
+            console.log(err)
+        });
+    }
+
+
+    /**
+     * Increments the selected carbs Line instead of creating a new line entry
+     * @param lineId
+     */
+    function incrementLine(lineId) {
+        setIsLoading(true);
+        axios.get('/api/carbsLine/increment/' + lineId)
             .then((response) => {
                 fetchData();
             }).catch(err => {
