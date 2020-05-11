@@ -15596,6 +15596,8 @@ a.text-dark:focus {
 
 .ProfilePage {
   padding: 8px;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
 }
 
 .ProfilePage__composites-container {
@@ -15604,11 +15606,11 @@ a.text-dark:focus {
 }
 
 .ProfilePage__composite {
-  border: solid 1px grey;
   padding: 8px;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  border: none;
+  border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -15634,8 +15636,14 @@ a.text-dark:focus {
 
 .ProfilePage__chart {
   margin: 8px 0;
-  border: solid 1px;
-  padding: 8px;
+  padding: 4px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.ProfilePage__chart .yAxis {
+  font-size: 0.7em;
 }
 
 #root {

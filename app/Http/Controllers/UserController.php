@@ -56,6 +56,11 @@ class UserController extends Controller
             'average' => $average,
             'targetComparison' => $averageAndTargetComparison,
             'user' => $user,
+            'progress' => $user
+                ->tickets()
+                ->orderBy('created_at', 'asc')
+                ->get(['created_at', 'current'])
+                ->toArray(),
         ]);
     }
 

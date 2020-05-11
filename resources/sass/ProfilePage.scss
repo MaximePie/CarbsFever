@@ -1,5 +1,7 @@
 .ProfilePage {
     padding: $default_padding;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
 
     &__composites-container {
         display: grid;
@@ -7,11 +9,11 @@
     }
 
     &__composite {
-        border: solid 1px grey;
         padding: $default_padding;
-        border-radius: 5px;
         display: flex;
         flex-direction: column;
+        border: none;
+        border-radius: 5px;
         box-shadow: $card_shadow;
 
         &-label {
@@ -41,7 +43,13 @@
 
     &__chart {
         margin: $default_vertical_margin;
-        border: solid 1px;
-        padding: $default_padding;
+        padding: 4px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: $card_shadow;
+
+        .yAxis {
+            font-size: 0.7em;
+        }
     }
 }
