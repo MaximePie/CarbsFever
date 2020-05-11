@@ -9,7 +9,7 @@ import moment from "moment";
 export default function ProfilePage(props) {
     let {username: paramsUserName} = useParams();
     const [username, setUsername] = React.useState(paramsUserName);
-    const [userInfo, setUserInfo] = React.useState({});
+    const [userInfo, setUserInfo] = React.useState(undefined);
     const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {

@@ -19,7 +19,7 @@ function Example() {
                         <TicketsPage/>
                     </Route>
                     <Route path="/ticket/:id" key="ticket">
-                        <Ticket/>
+                        <Ticket history={browserHistory}/>
                     </Route>
                     <Route path="/products" key="products">
                         <ProductsPage/>

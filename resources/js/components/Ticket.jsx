@@ -2,8 +2,11 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import CarbsLine from "./CarbsLine";
 import Loading from "./Loading";
+import { useHistory } from "react-router-dom";
 
-export default function Ticket() {
+export default function Ticket(props) {
+    const history = useHistory();
+
     const [ticket, setTicket] = React.useState(undefined);
     const [productName, setProductName] = React.useState('');
     const [portion, setPortion] = React.useState(1);
@@ -16,7 +19,7 @@ export default function Ticket() {
 
     React.useEffect(() => {
         fetchData();
-    }, []);
+    }, [id]);
 
     return (
         <div className="Ticket">
@@ -24,7 +27,11 @@ export default function Ticket() {
             {ticket && (
                 <>
                     <div className="Ticket__header">
-                        <h3 className="Ticket__title">{ticket.user.name}</h3>
+                        <div className="Ticket__header-actions">
+                            <h3 className="Ticket__title">{ticket.user.name}</h3>
+                            <i className="Ticket__header-action fas fa-user" onClick={goToUserProfile}/>
+                            <i className="Ticket__header-action fas fa-sync" onClick={goToCurrentTicket}/>
+                        </div>
                         <div className="Ticket__details">
                             <p className="Ticket__detail">
                                 <span className="Ticket__subdetail">
@@ -139,6 +146,10 @@ export default function Ticket() {
         })
     }
 
+    /**
+     * Deletes the selected line from the ticket
+     * @param lineId
+     */
     function deleteLine(lineId) {
         setIsLoading(true);
         axios.get('/api/carbsLine/delete/' + lineId)
@@ -147,6 +158,21 @@ export default function Ticket() {
             }).catch(err => {
             console.log(err)
         });
+    }
+
+    /**
+     * Redirects to ticket's user page
+     */
+    function goToUserProfile() {
+        history.push('/profile/' + ticket.user.name);
+    }
+
+
+    /**
+     * Synchronises tickets based on current user
+     */
+    function goToCurrentTicket() {
+        history.push('/ticket/' + ticket.user.name);
     }
 
 
