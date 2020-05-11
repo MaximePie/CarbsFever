@@ -26,7 +26,6 @@ class TicketTest extends TestCase
         $ticket->save();
         $ticket->current;
 
-        $ticket->updateFromCarbsLine();
         $this->assertEquals(0, $ticket->current);
     }
 
@@ -48,11 +47,9 @@ class TicketTest extends TestCase
         $portions = random_int(1, 10);
 
         $addedCarbsLine = $ticket->addCarbsLine($product, $portions);
-        $ticket->updateFromCarbsLine();
         $this->assertEquals($product->carbsPerPortion * $portions, $ticket->current);
 
         $addedCarbsLine->forceDelete();
-        $ticket->updateFromCarbsLine();
         $this->assertEquals(0, $ticket->current);
     }
 

@@ -43,6 +43,7 @@ class CarbsLineTest extends TestCase
         /** @var CarbsLine $carbsLine */
         $carbsLine = CarbsLine::first();
         $carbsLine->portions = $portions;
+        $carbsLine->product_id = $product->id;
         $carbsLine->save();
 
         $this->assertEquals($expectedCarbs, $carbsLine->carbs());

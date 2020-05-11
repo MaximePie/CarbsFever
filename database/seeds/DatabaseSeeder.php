@@ -73,10 +73,6 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-            $user->tickets()->each(function(Ticket $ticket) {
-                $ticket->updateFromCarbsLine();
-            });
-
         } catch (Exception $e) {
         }
     }

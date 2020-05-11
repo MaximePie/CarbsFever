@@ -47,7 +47,6 @@ class CarbsLineController extends BaseController
             'product_id' => $product->id,
         ]);
 
-        $ticket->updateFromCarbsLine();
 
         $ticket['user'] = $ticket->user()->first();
         $ticket['lines'] = $ticket->carbsLines()->get();
@@ -66,7 +65,6 @@ class CarbsLineController extends BaseController
         /** @var CarbsLine $carbsLine */
         $carbsLine = CarbsLine::findOrFail($id);
         $carbsLine->forceDelete();
-        $carbsLine->ticket()->first()->updateFromCarbsLine();
         return $carbsLine;
     }
 

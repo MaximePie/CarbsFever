@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static first()
  * @property int id
  * @property int portions
+ * @property int product_id
  */
 class CarbsLine extends Model
 {
