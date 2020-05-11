@@ -2,8 +2,20 @@
     padding: 8px;
     margin: 16px 0;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    align-items: center;
     justify-content: space-around;
+
+    &__back {
+        justify-self: center;
+        font-size: 1.25em;
+    }
+
+    &__links {
+        display: flex;
+        justify-content: space-between;
+    }
 
     &__link {
         font-size: 1.5em;

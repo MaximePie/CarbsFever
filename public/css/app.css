@@ -15556,8 +15556,20 @@ a.text-dark:focus {
 .Navbar {
   padding: 8px;
   margin: 16px 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
   justify-content: space-around;
+}
+
+.Navbar__back {
+  justify-self: center;
+  font-size: 1.25em;
+}
+
+.Navbar__links {
+  display: flex;
+  justify-content: space-between;
 }
 
 .Navbar__link {
