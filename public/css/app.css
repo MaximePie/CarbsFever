@@ -15466,6 +15466,15 @@ a.text-dark:focus {
   margin: 0 0 8px 0.5em;
 }
 
+.Ticket__header-actions .Ticket__header-action--trigger {
+  color: grey;
+  font-size: 1rem;
+}
+
+.Ticket__actions-detail-icon {
+  margin: 0 8px;
+}
+
 .Ticket__title {
   text-align: center;
 }
@@ -15504,6 +15513,8 @@ a.text-dark:focus {
 .Ticket__fields-input--with-sub-parts {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  margin-top: 16px;
+  margin-bottom: 8px;
 }
 
 .Ticket__fields-input--number {

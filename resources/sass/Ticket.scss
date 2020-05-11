@@ -15,8 +15,17 @@
             .Ticket__header-action {
                 font-size: 1.25rem;
                 margin: 0 $default_horizontal_margin 0.5em;
+
+                &--trigger {
+                    color: grey;
+                    font-size: 1rem;
+                }
             }
         }
+    }
+
+    &__actions-detail-icon {
+        margin: $default_horizontal_margin;
     }
 
     &__title {
@@ -57,6 +66,8 @@
             &--with-sub-parts {
                 display: grid;
                 grid-template-columns: 2fr 1fr;
+                margin-top: 16px;
+                margin-bottom: 8px;
             }
 
             &--number {
