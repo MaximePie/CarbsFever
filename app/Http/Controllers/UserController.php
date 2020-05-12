@@ -61,6 +61,7 @@ class UserController extends Controller
                 ->orderBy('created_at', 'asc')
                 ->get(['created_at', 'current'])
                 ->toArray(),
+            'dailyProgress', $user->dailyCarbsLines()->get()->toArray()
         ]);
     }
 

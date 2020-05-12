@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,7 +59,17 @@ class User extends Authenticatable
 
     public function averageCarbsPerDay()
     {
-        $average = $this->tickets()->pluck('current')->average();
-        return $average;
+        return $this->tickets()->pluck('current')->average();
+    }
+
+    /**
+     * Returns carbsLines that were created today
+     * @return HasMany
+     */
+    public function dailyCarbsLines()
+    {
+        /** @var Ticket $ticket */
+        $ticket = $this->tickets()->whereDate('created_at', Carbon::now())->firstOrFail();
+        return $ticket->carbsLines();
     }
 }
