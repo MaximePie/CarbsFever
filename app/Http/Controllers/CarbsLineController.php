@@ -47,12 +47,14 @@ class CarbsLineController extends BaseController
             'product_id' => $product->id,
         ]);
 
+        $ticket->updateFromCarbsLine();
 
         $ticket['user'] = $ticket->user()->first();
         $ticket['lines'] = $ticket->carbsLines()->get();
         $ticket['lines']->each(function(CarbsLine $line) {
             $line['product'] = $line->product()->first();
         });
+
 
         return $ticket;
     }
