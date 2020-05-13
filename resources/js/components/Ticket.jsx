@@ -30,6 +30,12 @@ export default function Ticket(props) {
         fetchProducts();
     }, [id]);
 
+    console.log(productName);
+
+    function handleAutoCompleteChange(event, values) {
+        setProductName(values)
+    }
+
     return (
         <div className="Ticket">
             <Loading isHidden={!isLoading}/>
@@ -81,12 +87,15 @@ export default function Ticket(props) {
                                 id="free-solo-demo"
                                 freeSolo
                                 options={productsList}
+                                onChange={handleAutoCompleteChange}
+                                value={productName}
                                 renderInput={(params) => (
                                     <TextField
                                         {...params}
                                         label="Aliment"
                                         margin="normal"
                                         variant="outlined"
+                                        value={productName}
                                         onChange={(event) => setProductName(event.target.value)}
                                     />
                                 )}

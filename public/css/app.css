@@ -15545,6 +15545,11 @@ a.text-dark:focus {
   background-color: dodgerblue;
 }
 
+.Ticket__submit:disabled {
+  -webkit-filter: brightness(150%);
+          filter: brightness(150%);
+}
+
 .CarbsLine {
   margin: 8px 0;
   display: grid;

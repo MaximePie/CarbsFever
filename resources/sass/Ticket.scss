@@ -98,5 +98,9 @@
         font-size: 1.5em;
         color: white;
         background-color: dodgerblue;
+
+        &:disabled {
+            filter: brightness(150%);
+        }
     }
 }
