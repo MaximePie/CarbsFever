@@ -69,7 +69,7 @@ class User extends Authenticatable
     public function dailyCarbsLines()
     {
         /** @var Ticket $ticket */
-        $ticket = $this->tickets()->whereDate('created_at', Carbon::now())->firstOrFail();
-        return $ticket->carbsLines();
+        $ticket = $this->tickets()->whereDate('created_at', Carbon::now())->first();
+        return $ticket ? $ticket->carbsLines() : null;
     }
 }
