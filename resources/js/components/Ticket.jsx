@@ -83,22 +83,12 @@ export default function Ticket(props) {
                             <CarbsLine line={line} onDeleteLine={deleteLine} onIncrementLine={incrementLine}/>
                             )}
                         <div className="Ticket__fields">
-                            <Autocomplete
-                                id="free-solo-demo"
-                                freeSolo
-                                options={productsList}
-                                onChange={handleAutoCompleteChange}
+                            <TextField
+                                label="Aliment"
+                                margin="normal"
+                                variant="outlined"
                                 value={productName}
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        label="Aliment"
-                                        margin="normal"
-                                        variant="outlined"
-                                        value={productName}
-                                        onChange={(event) => setProductName(event.target.value)}
-                                    />
-                                )}
+                                onChange={(event) => setProductName(event.target.value)}
                             />
                             <div className="Ticket__fields-input Ticket__fields-input--with-sub-parts">
                                 <input

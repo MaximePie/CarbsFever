@@ -1,6 +1,8 @@
 import React from 'react';
 import Loading from "./Loading"
 import Product from "./Product"
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 export default function ProductsPage() {
     const [productsList, setProductsList] = React.useState([]);
@@ -15,6 +17,19 @@ export default function ProductsPage() {
         <div className="ProductsPage">
             <Loading isHidden={!isLoading}/>
             <h1>Liste des ingrédients</h1>
+            <Autocomplete
+                id="combo-box-demo"
+                options={productsList}
+                getOptionLabel={(product) => product.name}
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        label="Aliment"
+                        margin="normal"
+                        variant="outlined"
+                    />
+                )}
+            />
             <div className="Product Product--header">
                 <div>Nom</div>
                 <div>Cal.</div>
